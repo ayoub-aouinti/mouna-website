@@ -32,13 +32,19 @@
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* block horizontal scroll at root level */
+  max-width: 100%;
+}
 
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
   background: var(--beige);
   overflow-x: hidden;
+  max-width: 100%;
   line-height: 1.65;
 }
 
@@ -103,7 +109,7 @@ img { max-width: 100%; }
 .btn--full { width: 100%; }
 
 /* Sections */
-.section { padding: 100px 0; }
+.section { padding: 100px 0; overflow: hidden; }
 
 .section-header {
   text-align: center;
@@ -444,6 +450,9 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
   position: relative;
+  /* give the rings breathing room and contain them */
+  padding: 40px;
+  overflow: hidden;
 }
 
 .about-frame {
@@ -454,10 +463,10 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; /* rings position relative to this */
   background: var(--beige);
   box-shadow: 0 0 0 6px rgba(212,169,106,.12), var(--shadow-m);
+  /* no overflow:hidden here — the img handles its own clip */
 }
 
 .about-frame__img {
@@ -465,8 +474,10 @@ img { max-width: 100%; }
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: 50%;
+  border-radius: 50%; /* clips image to circle */
   display: block;
+  position: relative;
+  z-index: 1;
   transition: transform .6s ease;
 }
 
@@ -479,13 +490,22 @@ img { max-width: 100%; }
   border-radius: 50%;
   border: 1px dashed rgba(212,169,106,.3);
   pointer-events: none;
+  /* center over the frame */
+  top: 50%;
+  left: 50%;
+  z-index: 0;
 }
 .about-frame__ring--1 {
-  inset: -16px;
+  /* 16px larger on each side = frame + 32px total */
+  width: calc(100% + 32px);
+  height: calc(100% + 32px);
+  transform: translate(-50%, -50%);
   animation: rotateSlow 30s linear infinite;
 }
 .about-frame__ring--2 {
-  inset: -32px;
+  width: calc(100% + 64px);
+  height: calc(100% + 64px);
+  transform: translate(-50%, -50%);
   border-color: rgba(212,169,106,.15);
   animation: rotateSlow 50s linear infinite reverse;
 }

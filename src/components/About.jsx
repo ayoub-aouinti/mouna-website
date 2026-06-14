@@ -36,14 +36,15 @@ export default function About() {
             className={`about-visual reveal${visualVisible ? ' reveal--visible' : ''}`}
           >
             <div className="about-frame">
+              {/* rings inside the frame so they're clipped by the visual, not the page */}
+              <div className="about-frame__ring about-frame__ring--1" />
+              <div className="about-frame__ring about-frame__ring--2" />
               <img
                 src="/manuscript.jpg"
                 alt="Arabic manuscript"
                 className="about-frame__img"
               />
             </div>
-            <div className="about-frame__ring about-frame__ring--1" />
-            <div className="about-frame__ring about-frame__ring--2" />
           </div>
 
           <div
