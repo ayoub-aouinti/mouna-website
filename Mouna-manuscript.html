@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>بطاقة خدمات – د. منى نعمان</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f4efe8;
+      font-family: 'Amiri', serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    .card {
+      background: #fff;
+      max-width: 780px;
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(90,60,20,0.13);
+      overflow: hidden;
+      border: 1.5px solid #d4b896;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #3d2b1f 0%, #6b4226 55%, #8b5e3c 100%);
+      padding: 44px 40px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 25 L55 25 L40 37 L46 57 L30 45 L14 57 L20 37 L5 25 L25 25 Z' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+
+    .ornament {
+      color: #d4a96a;
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 10px;
+      opacity: 0.85;
+    }
+
+    .header h1 {
+      font-family: 'Scheherazade New', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .header .title-line {
+      color: #d4a96a;
+      font-size: 1.15rem;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header .title-line span {
+      display: inline-block;
+      margin: 0 6px;
+      opacity: 0.6;
+    }
+
+    .divider-ornament {
+      color: #d4a96a;
+      font-size: 1.1rem;
+      margin-top: 14px;
+      opacity: 0.7;
+    }
+
+    /* ── Body ── */
+    .body {
+      padding: 38px 42px 32px;
+    }
+
+    /* About strip */
+    .about {
+      background: #fdf7f0;
+      border: 1px solid #e8d5b8;
+      border-radius: 10px;
+      padding: 18px 24px;
+      font-size: 1.08rem;
+      color: #4a3420;
+      line-height: 2;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    .about strong {
+      color: #6b4226;
+    }
+
+    /* Section title */
+    .section-title {
+      font-family: 'Scheherazade New', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #5a3a1a;
+      border-bottom: 2px solid #d4a96a;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .icon { font-size: 1.1rem; }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .service-card {
+      background: linear-gradient(160deg, #fdf7f0, #fff8ef);
+      border: 1.5px solid #dfc49a;
+      border-radius: 12px;
+      padding: 20px 20px 16px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(107,66,38,0.12);
+    }
+
+    .service-card .svc-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Scheherazade New', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #5a3a1a;
+      margin-bottom: 7px;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: #7a5c3a;
+      line-height: 1.8;
+    }
+
+    /* Credentials */
+    .credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fdf7f0;
+      border-right: 4px solid #d4a96a;
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .cred-item .cred-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .cred-item .cred-text {
+      font-size: 1rem;
+      color: #4a3420;
+      line-height: 1.8;
+    }
+
+    .cred-item .cred-text strong {
+      color: #6b4226;
+      display: block;
+    }
+
+    /* Contact */
+    .contact-bar {
+      background: linear-gradient(135deg, #3d2b1f, #6b4226);
+      border-radius: 12px;
+      padding: 22px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f5e6d0;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .contact-item .ci-icon {
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item:hover .ci-icon {
+      background: rgba(212,169,106,0.4);
+    }
+
+    .contact-sep { color: rgba(255,255,255,0.25); font-size: 1.2rem; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 0.82rem;
+      color: #b09070;
+      border-top: 1px solid #edd8ba;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 560px) {
+      .body { padding: 26px 20px 22px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 2rem; }
+      .contact-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="ornament">❧ ✦ ❧</div>
+    <h1>منى نعمان</h1>
+    <div class="title-line">
+      باحثة دكتوراه في اللغة والآداب والحضارة العربية
+      <span>|</span>
+      متخصِّصة في علم المخطوطات
+    </div>
+    <div class="divider-ornament">﴾ ✦ ﴿</div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <!-- About -->
+    <div class="about">
+      حاملة <strong>شهادة الماجستير في اللغة والآداب والحضارة العربية</strong> من كلية الآداب بصفاقس، وباحثة في مرحلة الدكتوراه. تتمتع بخبرة ميدانية متراكمة تقارب <strong>ثلاث سنوات</strong> في العمل مع المخطوطات العربية مقابلةً وتفريغًا وتدقيقًا، وبقدرة على قراءة الخطوط المشرقية والمغربية على اختلافها.
+    </div>
+
+    <!-- Services -->
+    <div class="section-title"><span class="icon">📜</span> الخدمات المُقدَّمة</div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="svc-icon">🔍</span>
+        <h3>مقابلة المخطوطات</h3>
+        <p>مقارنة النسخ المخطوطة وإثبات الفروق والاختلافات بدقة علمية عالية وفق المنهجية الأكاديمية المعتمدة</p>
+      </div>
+
+      <div class="service-card">
+        <span class="svc-icon">✍🏼</span>
+        <h3>تفريغ المخطوطات</h3>
+        <p>نقل النصوص المخطوطة إلى الصيغة الرقمية بأمانة تامة مع مراعاة قواعد الضبط والإملاء العربي</p>
+      </div>
+
+      <div class="service-card">
+        <span class="svc-icon">📖</span>
+        <h3>المساعدة في التحقيق</h3>
+        <p>دعم الباحثين في مراحل تحقيق المخطوطات من توثيق وتخريج وشرح إلى إعداد الحواشي العلمية</p>
+      </div>
+
+      <div class="service-card">
+        <span class="svc-icon">🖋️</span>
+        <h3>قراءة الخطوط المختلفة</h3>
+        <p>قراءة الخطوط المشرقية والمغربية على اختلاف أنواعها: نسخي، مغربي، أندلسي، ديواني وسواها</p>
+      </div>
+
+    </div>
+
+    <!-- Credentials -->
+    <div class="section-title"><span class="icon">🎓</span> المؤهلات والخبرات</div>
+
+    <div class="credentials">
+
+      <div class="cred-item">
+        <span class="cred-icon">🏛️</span>
+        <div class="cred-text">
+          <strong>ماجستير في اللغة والآداب والحضارة العربية</strong>
+          كلية الآداب والعلوم الإنسانية – صفاقس
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-icon">🔬</span>
+        <div class="cred-text">
+          <strong>باحثة دكتوراه</strong>
+          في طور إعداد أطروحة الدكتوراه في اللغة والآداب والحضارة العربية
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-icon">💼</span>
+        <div class="cred-text">
+          <strong>مُقابِلة مخطوطات ومدقِّقة – منصة زنكي (Zinki.ai)</strong>
+          خبرة ميدانية متواصلة تقارب ثلاث سنوات في مقابلة المخطوطات والتدقيق العلمي
+        </div>
+      </div>
+
+      <div class="cred-item">
+        <span class="cred-icon">📝</span>
+        <div class="cred-text">
+          <strong>إجازة أساسية في اللغة والآداب والحضارة العربية</strong>
+          دورة 2018م – كلية الآداب والعلوم الإنسانية بصفاقس
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-bar">
+      <a class="contact-item" href="mailto:mounanoomen1@gmail.com">
+        <span class="ci-icon">✉️</span>
+        mounanoomen1@gmail.com
+      </a>
+      <span class="contact-sep">|</span>
+      <a class="contact-item" href="https://wa.me/21622823429" target="_blank">
+        <span class="ci-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#f5e6d0"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.506L4 29l7.706-1.807A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22a9.94 9.94 0 0 1-5.07-1.385l-.364-.216-3.77.884.932-3.664-.236-.376A9.953 9.953 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.434-7.418c-.298-.149-1.766-.872-2.04-.97-.273-.1-.472-.149-.67.149-.199.298-.771.97-.945 1.169-.174.199-.348.224-.646.075-.298-.149-1.259-.465-2.4-1.483-.887-.792-1.485-1.769-1.659-2.067-.174-.298-.018-.459.13-.608.134-.133.298-.347.447-.521.149-.174.199-.298.298-.497.1-.199.05-.373-.025-.521-.075-.149-.67-1.617-.918-2.214-.242-.581-.487-.502-.67-.511l-.571-.01c-.199 0-.521.075-.794.373s-1.043 1.019-1.043 2.487 1.068 2.885 1.217 3.084c.149.199 2.1 3.205 5.088 4.492.711.307 1.267.49 1.699.627.714.227 1.365.195 1.879.118.573-.085 1.766-.722 2.016-1.42.249-.697.249-1.295.174-1.42-.074-.124-.272-.199-.571-.347z"/></svg>
+        </span>
+        0021622823429
+      </a>
+      <span class="contact-sep">|</span>
+      <a class="contact-item" href="https://zinki.ai/" target="_blank">
+        <span class="ci-icon">🌐</span>
+        zinki.ai
+      </a>
+    </div>
+
+    <div class="footer">الجمهوريّة التّونسيّة &nbsp;·&nbsp; متاحة للتعاون البحثي والمشاريع الأكاديمية</div>
+
+  </div>
+</div>
+
+</body>
+</html>
