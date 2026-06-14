@@ -913,6 +913,23 @@ a.contact-card:hover {
 }
 
 @media (max-width: 760px) {
+  /* ── Navbar ── */
+  .nav-container {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .nav-logo__text {
+    font-size: 1rem;
+  }
+
+  .lang-btn {
+    padding: 3px 7px;
+    font-size: .75rem;
+  }
+
+  .lang-sep { font-size: .7rem; }
+
   .nav-links {
     position: fixed;
     top: var(--nav-h);
@@ -942,23 +959,40 @@ a.contact-card:hover {
 
   .menu-toggle { display: flex; }
 
+  /* ── Services ── */
   .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 28px 20px; }
 
+  /* ── Credentials ── */
   .cred-timeline::before { display: none; }
   .cred-item { padding-left: 0; }
   :dir(rtl) .cred-item { padding-right: 0; }
   .cred-item__dot { display: none; }
 
-  .section { padding: 72px 0; }
-  .section-header { margin-bottom: 44px; }
+  /* ── Spacing ── */
+  .section { padding: 60px 0; }
+  .section-header { margin-bottom: 36px; }
+  .section-title { font-size: 1.7rem; }
+
+  /* ── Contact ── */
+  .contact-form-wrapper { padding: 20px; }
+  .contact-subtitle { font-size: .97rem; }
 }
 
 @media (max-width: 480px) {
+  .nav-container { padding: 0 12px; gap: 6px; }
+  .nav-logo__text { font-size: .92rem; }
+
   .hero__cta { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 280px; }
-  .about-frame { width: 240px; height: 240px; }
-  .about-stats { gap: 20px; justify-content: center; }
+
+  .about-frame { width: 220px; height: 220px; }
+  .about-body { font-size: .97rem; }
+  .about-stats { gap: 16px; justify-content: center; }
+  .stat__number { font-size: 2.2rem; }
+
   .footer__links { flex-direction: column; gap: 8px; }
+  .footer__name { font-size: 1.3rem; }
 }
 
 /* ── WhatsApp Widget ── */
@@ -1150,8 +1184,20 @@ a.contact-card:hover {
 
 :lang(ar) .wa-bubble__cta { font-family: var(--font-ar); }
 
-@media (max-width: 480px) {
-  .wa-widget { bottom: 20px; right: 20px; }
-  .wa-widget--rtl { right: auto; left: 20px; }
-  .wa-bubble { width: calc(100vw - 40px); }
+@media (max-width: 760px) {
+  .wa-widget { bottom: 20px; right: 16px; }
+  .wa-widget--rtl { right: auto; left: 16px; }
+
+  .wa-bubble {
+    width: min(290px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+  }
+
+  /* In RTL, make sure bubble doesn't overflow right edge */
+  .wa-widget--rtl .wa-bubble {
+    /* anchor from left, grow rightward, stop before right edge */
+    max-width: calc(100vw - 32px);
+  }
+
+  .wa-fab { width: 52px; height: 52px; }
 }
